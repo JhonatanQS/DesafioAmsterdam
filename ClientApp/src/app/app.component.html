@@ -1,10 +1,31 @@
 <div class='container-fluid'>
   <div class='row'>
-    <div class='col-sm-3'>
+    <!--<div class='col-sm-3'>
       <app-nav-menu></app-nav-menu>
     </div>
     <div class='col-sm-9 body-content'>
       <router-outlet></router-outlet>
-    </div>
+    </div>-->
+    <input type="file"
+           #fileImportInput
+           name="File Upload"
+           id="txtFileUpload"
+           class="btn btn-primary"
+           (change)="fileloaded($event)"
+           accept=".csv" />
+  </div>
+  <div>
+    <table class="table table-responsive table-hover" border="1"
+           style="width : 50%;">
+      <tbody>
+        <ng-container *ngFor="let csvRec of csvRecords;let i=index">
+          <tr>
+            <ng-container *ngFor="let data of csvRec;let j=index">
+              <td>{{data}}</td>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
   </div>
 </div>
